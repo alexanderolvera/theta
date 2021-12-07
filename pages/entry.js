@@ -1,9 +1,13 @@
 import { auth } from '../lib/firebase'
 import { signInWithPopup, GoogleAuthProvider, signOut } from '@firebase/auth'
 import toast from 'react-hot-toast'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { UserContext } from '../lib/context'
+import { useRouter } from 'next/router'
+
 export default function Entry() {
-  const [user, setUser] = useState(null)
+  const { user } = useContext(UserContext)
+  const router = useRouter()
 
   return (
     <>
@@ -19,9 +23,9 @@ export default function Entry() {
     const handleSignInWithGoogle = async () => {
       try {
         const provider = new GoogleAuthProvider();
-        const result = await signInWithPopup(auth, provider)
-        setUser(result.user)
+        await signInWithPopup(auth, provider)
         toast.success('Successfully logged in with Google.')
+        router.push('/dashboard')
       } catch (error) {
         console.log(error)
         toast.error('Error logging in. Please try again.')
@@ -34,7 +38,6 @@ export default function Entry() {
     const handleSignOut = async () => {
       try {
         await signOut(auth)
-        setUser(null)
         toast.success('Successfully signed out.')
       } catch (error) {
         console.log(error)

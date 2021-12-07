@@ -37,17 +37,4 @@ export default function Entry() {
     }
     return <button id="google-signin" onClick={handleSignInWithGoogle}></button>
   }
-
-  function SignOutButton() {
-    const handleSignOut = async () => {
-      try {
-        await signOut(auth)
-        toast.success('Successfully signed out.')
-      } catch (error) {
-        console.log(error)
-        toast.error('Error signing you out :(')
-      }
-    }
-    return <button id="sign-out" onClick={handleSignOut}>Sign Out</button>
-  }
 }

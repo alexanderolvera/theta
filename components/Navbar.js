@@ -81,27 +81,3 @@ export default function Navbar() {
     </nav >
   );
 }
-
-// {user && (
-//   <ul className="navbar-nav mr-auto">
-//     <li>
-//       <Link href={`/dashboard`} passHref>
-//         <img className="rounded-circle" src={user?.photoURL} width="50px" height="50px" />
-//       </Link>
-//     </li>
-//   </ul>
-// )}
-
-
-
-// {/* user is not signed OR has not created username */ }
-// {
-//   !user && (
-//     <li>
-//       <Link href="/entry">
-//         <button className="btn-blue">Log in</button>
-//       </Link>
-//     </li>
-//   )
-// }
-// </ul >

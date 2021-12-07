@@ -9,10 +9,14 @@ export default function Entry() {
   const { user } = useContext(UserContext)
   const router = useRouter()
 
+  const redirect = () => {
+    router.push('/dashboard')
+  }
+
   return (
     <>
       {user ?
-        SignOutButton()
+        <>{redirect()}</>
         :
         SignInButton()
       }

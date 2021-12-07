@@ -4,7 +4,9 @@ import { UserContext } from '../lib/context';
 import { auth } from '../lib/firebase'
 import { useAuthState } from 'react-firebase-hooks/auth';
 
-import 'bootstrap/dist/css/bootstrap.css'
+import Navbar from '../components/Navbar';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
@@ -15,6 +17,7 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
+      <Navbar />
       <Component {...pageProps} />
       <Toaster />
     </UserContext.Provider>

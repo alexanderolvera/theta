@@ -60,3 +60,7 @@ a {
 #google-signin span {
   display: none;
 }
+
+.user-avatar:hover {
+  cursor: pointer;
+}

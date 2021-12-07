@@ -14,3 +14,53 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.loader {
+  border: 10px solid white;
+  border-top: 10px solid #2962FF;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#google-signin {
+  background-image: url(/images/btn_google_signin_dark_normal_web.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 46px;
+  width: 191px;
+  border: none;
+}
+
+#google-signin :hover {
+  cursor: pointer;
+  background-image: url(/images/btn_google_signin_dark_focus_web.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 46px;
+  width: 191px;
+  border: none;
+}
+
+#google-signin :active {
+  background-image: url(/images/btn_google_signin_dark_pressed_web.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 46px;
+  width: 191px;
+  border: none;
+}
+
+#google-signin span {
+  display: none;
+}
+
+.user-avatar:hover {
+  cursor: pointer;
+}

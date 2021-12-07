@@ -1,0 +1,21 @@
+#google-signin {
+  background-image: url(/images/btn_google_signin_dark_normal_web.png);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 46px;
+  width: 191px;
+  border: none;
+}
+
+#google-signin :hover {
+  cursor: pointer;
+  background-image: url(/images/btn_google_signin_dark_focus_web.png);
+}
+
+#google-signin :active {
+  background-image: url(/images/btn_google_signin_dark_pressed_web.png);
+}
+
+#google-signin span {
+  display: none;
+}

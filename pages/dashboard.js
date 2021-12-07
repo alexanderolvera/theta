@@ -6,13 +6,31 @@ export default function Dashboard() {
 
   const { user } = useContext(UserContext)
 
+  const handlePageChange = (e) => {
+    e.preventDefault()
+    e.target.id === "movie-list-tab" ? document.getElementById('search-tab').classList.toggle('active') : document.getElementById('movie-list-tab').classList.toggle('active')
+    e.target.className += " active"
+  }
+
   return (
     <>
       <h1> Dashboard </h1>
       {!user ?
         <Loader show />
         :
-        <h3> Welcome {user.displayName}</h3>
+        (
+          <>
+            <h3> Welcome {user.displayName}</h3>
+            <ul className="nav nav-tabs">
+              <li className="nav-item">
+                <a id="movie-list-tab" className="nav-link active" aria-current="page" href="#" onClick={handlePageChange}>Movie List</a>
+              </li>
+              <li className="nav-item">
+                <a id="search-tab" className="nav-link" href="#" onClick={handlePageChange}>Search</a>
+              </li>
+            </ul>
+          </>
+        )
       }
 
     </>

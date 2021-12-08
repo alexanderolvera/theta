@@ -1,15 +1,18 @@
+import { useEffect, useState } from 'react'
+import MovieListItem from './MovieListItem'
+import Loader from './Loader'
 
-export default function MovieList() {
+export default function MovieList({ list }) {
 
   return (
     <>
-      <h3>Movie List Component</h3>
       <ul className="list-group">
-        <li className="list-group-item">Movie 1</li>
-        <li className="list-group-item">Movie 2</li>
-        <li className="list-group-item">Movie 3</li>
-        <li className="list-group-item">Movie 4</li>
-        <li className="list-group-item">Movie 5</li>
+        {list ?
+        <>
+         {list.results.map((movie, index) => (<MovieListItem movieData={movie} key={index}/>))}
+         </>
+        :
+         null}
       </ul>
     </>
   )

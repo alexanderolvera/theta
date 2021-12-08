@@ -70,7 +70,7 @@ export default function Navbar() {
               <ul className="navbar-nav ms-auto">
                 <li>
                   <Link href="/entry" passHref>
-                    <button className="btn-blue">Log in</button>
+                    <button className="btn btn-primary">Log in</button>
                   </Link>
                 </li>
               </ul>

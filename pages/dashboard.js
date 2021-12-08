@@ -15,8 +15,7 @@ export default function Dashboard() {
   }
 
   return (
-    <>
-      <h1> Dashboard </h1>
+    <div className="me-auto">
       {!user ?
         <Loader show />
         :
@@ -38,6 +37,6 @@ export default function Dashboard() {
         )
       }
 
-    </>
+    </div>
   )
 }

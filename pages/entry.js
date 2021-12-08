@@ -10,7 +10,7 @@ export default function Entry() {
   const router = useRouter()
 
   const redirect = () => {
-    router.push('/dashboard')
+    router.push(`/${user.uid}/dashboard`)
   }
 
   return (
@@ -27,9 +27,8 @@ export default function Entry() {
     const handleSignInWithGoogle = async () => {
       try {
         const provider = new GoogleAuthProvider();
-        await signInWithPopup(auth, provider)
+        let result = await signInWithPopup(auth, provider)
         toast.success('Successfully logged in with Google.')
-        router.push('/dashboard')
       } catch (error) {
         console.log(error)
         toast.error('Error logging in. Please try again.')

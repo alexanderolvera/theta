@@ -58,7 +58,7 @@ export default function Navbar() {
                 <button className="btn btn-danger" onClick={handleSignOut}>Log Out</button>
               </li>
               <li>
-                <Link href={`/dashboard`} passHref>
+                <Link href={`/${user.uid}/dashboard`} passHref>
                   <img className="rounded-circle user-avatar" src={user?.photoURL} width="50px" height="50px" />
                 </Link>
               </li>

@@ -1,13 +1,25 @@
+import { useEffect, useState } from 'react'
+import MovieListItem from './MovieListItem'
+import Loader from './Loader'
 
-export default function MovieList() {
+export default function MovieList({ list, userList, updateMovies }) {
 
   return (
-    <ul className="list-group">
-      <li className="list-group-item">Movie 1</li>
-      <li className="list-group-item">Movie 2</li>
-      <li className="list-group-item">Movie 3</li>
-      <li className="list-group-item">Movie 4</li>
-      <li className="list-group-item">Movie 5</li>
-    </ul>
+    <>
+      <ul className="list-group">
+        {list ?
+        <>
+         {list.results.map((movie, index) => {
+           let exists = true;
+           if (!userList || userList.indexOf(movie.id) === -1) {
+             exists = false
+           }
+           return <MovieListItem movieData={movie} exists={exists} key={index} updateMovies={updateMovies}/>
+         })}
+         </>
+        :
+         null}
+      </ul>
+    </>
   )
 }

@@ -9,7 +9,7 @@ export default function MovieList({ list }) {
       <ul className="list-group">
         {list ?
         <>
-         {list.results.map((movie, index) => (<MovieListItem movieData={movie} key={index}/>))}
+         {list.results.map((movie, index) => (<MovieListItem movieData={movie} exists={false} key={index}/>))}
          </>
         :
          null}

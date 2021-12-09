@@ -69,7 +69,7 @@ export default function Dashboard({ movies }) {
               </li>
             </ul>
             <div className="page-data">
-              {activeTab === "movie-list-tab" ? <MovieList list={movies} /> : <MovieSearch />}
+              {activeTab === "movie-list-tab" ? <MovieList list={movies} /> : <MovieSearch list={movies}/>}
             </div>
           </>
         )

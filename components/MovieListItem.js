@@ -29,6 +29,7 @@ export default function MovieListItem({ movieData, exists, updateMovies}) {
           updateMovies(newMovieArray)
         } else {
           toast.error('Movie already in list...')
+          throw new Error('Movie already in list')
         }
       } else {
         await setDoc(doc(db, "user-movie-lists", user.uid), {
@@ -39,7 +40,7 @@ export default function MovieListItem({ movieData, exists, updateMovies}) {
       toast.success('Movie added to list! :)')
     } catch (error) {
       console.log(error)
-      toast.error('Erro adding movie. Try again later. :(')
+      toast.error('Error adding movie. Try again later. :(')
     }
   }
 
@@ -61,7 +62,7 @@ export default function MovieListItem({ movieData, exists, updateMovies}) {
           updateMovies(data.movies)
         }
       }
-      toast.success('Successfully remove movie :)')
+      toast.success('Successfully removed movie :)')
     } catch (error) {
       console.log(error)
       toast.error('Error removing movie. :(')

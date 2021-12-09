@@ -49,19 +49,10 @@ export default function Dashboard() {
     })
   }
 
-  // const getMovies = () => {
-  //   return new Promise(async (resolve, reject) => {
-  //     try {
-  //       setMovieIds(await getMovieIds())
-  //       if (movieIds.length > 0) {
-  //         setMovies(await getMovieData(movieIds))
-  //       }
-  //       resolve()
-  //     } catch (error) {
-  //       reject(error)
-  //     }
-  //   })
-  // }
+  const updateMovies = (newIds) => {
+    setMovieIds(newIds)
+    getMovieData()
+  }
 
   useEffect(() => {
     getMovieIds()
@@ -72,7 +63,7 @@ export default function Dashboard() {
     getMovieData()
       .then(details => {
         if (details) {
-          setMovies(details)
+          setMovies({results: details})
         }
       })
   }, [movieIds])
@@ -99,7 +90,7 @@ export default function Dashboard() {
               </li>
             </ul>
             <div className="page-data">
-              {activeTab === "movie-list-tab" ? <MovieList list={movies} userList={movieIds} /> : <MovieSearch userList={movies}/>}
+              {activeTab === "movie-list-tab" ? <MovieList list={movies} userList={movieIds} updateMovies={updateMovies} /> : <MovieSearch userList={movieIds} updateMovies={updateMovies} />}
             </div>
           </>
         )

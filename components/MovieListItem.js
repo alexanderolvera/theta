@@ -5,7 +5,7 @@ import { UserContext } from '../lib/context'
 import { db } from '../lib/firebase'
 import { doc, getDoc, updateDoc, setDoc } from 'firebase/firestore'
 
-export default function MovieListItem({ movieData, exists }) {
+export default function MovieListItem({ movieData, exists, updateMovies}) {
 
   const {user} = useContext(UserContext)
 
@@ -26,6 +26,7 @@ export default function MovieListItem({ movieData, exists }) {
           await updateDoc(docRef, {
             movies: newMovieArray
           })
+          updateMovies(newMovieArray)
         } else {
           toast.error('Movie already in list...')
         }
@@ -33,6 +34,7 @@ export default function MovieListItem({ movieData, exists }) {
         await setDoc(doc(db, "user-movie-lists", user.uid), {
           movies: [movie_id]
         })
+        updateMovies([movie_id])
       }
       toast.success('Movie added to list! :)')
     } catch (error) {
@@ -56,6 +58,7 @@ export default function MovieListItem({ movieData, exists }) {
           await updateDoc(docRef, {
             movies: data.movies
           })
+          updateMovies(data.movies)
         }
       }
       toast.success('Successfully remove movie :)')

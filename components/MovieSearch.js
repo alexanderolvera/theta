@@ -4,7 +4,7 @@ import MovieList from "./MovieList"
 import toast from 'react-hot-toast'
 import Loader from './Loader'
 
-export default function MovieSearch() {
+export default function MovieSearch({ userList, updateMovies }) {
   const [searchQuery, setSearchQuery] = useState(null)
   const [movieList, setMovieList] = useState(null)
   const [searching, setSearching] = useState(false)
@@ -41,7 +41,7 @@ export default function MovieSearch() {
       </div>
       <div className="search-data">
         {/* pass movie list from api call here */}
-        <MovieList list={movieList}/>
+        <MovieList list={movieList} userList={userList} updateMovies={updateMovies} />
       </div>
     </>
   )

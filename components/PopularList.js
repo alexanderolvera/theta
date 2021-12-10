@@ -1,6 +1,7 @@
 import PopularListItem from "./PopularListItem"
 import { Modal, Button} from 'react-bootstrap'
 import { useState } from "react";
+import RandomizerModal from "./RandomizerModal";
 
 export default function PopularList({ list }) {
   const [show, setShow] = useState(false);
@@ -18,25 +19,7 @@ export default function PopularList({ list }) {
 
   return (
     <>
-      <Modal show={show} onHide={handleClose} size='lg' centered>
-        <Modal.Header closeButton>
-          <Modal.Title>Randomizer!</Modal.Title>
-        </Modal.Header>
-        <Modal.Body><PopularListItem movieData={randomMovie}/></Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleRandomizerClick}>
-            Re-roll
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    {list || list.results.length > 1 ?
-      <button className="btn btn-warning" onClick={handleRandomizerClick}>Im Feeling Lucky!</button>
-      :
-      null
-      }
+      <RandomizerModal movies={list} />
       <ul className="list-group">
         {list ?
         <>

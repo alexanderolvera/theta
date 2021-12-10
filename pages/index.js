@@ -39,7 +39,6 @@ export default function Home({ movies }) {
           Your personal movie list in the cloud!{' '}
         </p>
         <br/>
-        <h3>Popular now</h3>
         <PopularList list={movies} />
       </main>
 

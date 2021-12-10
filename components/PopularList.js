@@ -20,6 +20,8 @@ export default function PopularList({ list }) {
   return (
     <>
       <RandomizerModal movies={list} />
+      <br/>
+      <br/>
       <ul className="list-group">
         {list ?
         <>

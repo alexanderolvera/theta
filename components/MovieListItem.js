@@ -76,10 +76,12 @@ export default function MovieListItem({ movieData, exists, updateMovies}) {
         <div className="details d-flex flex-column me-2">
           <h1 className="me-auto">{movieData.title}</h1>
           <p>{movieData.overview}</p>
-          {exists ?
-            <button className="btn btn-warning btn-sm remove-button" onClick={handleRemoveMovie}>Remove-</button>
-           :
-            <button className="btn btn-primary btn-sm add-button" onClick={handleAddMovie}>Add+</button>}
+          {user &&
+            exists ?
+              <button className="btn btn-warning btn-sm remove-button" onClick={handleRemoveMovie}>Remove-</button>
+            :
+              <button className="btn btn-primary btn-sm add-button" onClick={handleAddMovie}>Add+</button>
+          }
         </div>
       </div>
     </li>

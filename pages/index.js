@@ -1,8 +1,27 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import axios from 'axios'
+import PopularList from '../components/PopularList'
 
-export default function Home() {
+export async function getStaticProps() {
+  let movies = null
+  try {
+    let response = await axios.get('https://api.themoviedb.org/3/movie/popular', {
+      headers: {Authorization: `Bearer ${process.env.API_KEY}`}
+    })
+    movies = response.data
+  } catch (error) {
+    console.log(error)
+  }
+
+  return {
+    props: {movies},
+    revalidate: 36000
+  }
+}
+
+export default function Home({ movies }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -13,43 +32,15 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome to Marquee
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
+          Your personal movie list in the cloud!{' '}
         </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+        <br/>
+        <h3>Popular now</h3>
+        <PopularList list={movies} />
       </main>
 
       <footer className={styles.footer}>

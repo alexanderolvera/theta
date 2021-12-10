@@ -1,5 +1,5 @@
 
-export default function PopularListItem({ movieData }) {
+export default function MovieListItem({ movieData }) {
   return (
     <li className="list-group-item">
       <div className="d-flex flex-row">

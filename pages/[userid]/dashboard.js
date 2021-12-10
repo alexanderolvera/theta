@@ -1,13 +1,13 @@
+import Image from 'next/image'
 import { useContext, useEffect, useState } from "react"
 import { UserContext } from "../../lib/context"
 import { doc, getDoc } from "firebase/firestore";
 import { db } from '../../lib/firebase'
 
-import getMovieDetails from "../../lib/getMovieDetails";
-
 import Loader from '../../components/Loader'
 import MovieList from '../../components/MovieList'
 import MovieSearch from "../../components/MovieSearch"
+import styles from '../../styles/Home.module.css'
 import axios from "axios";
 
 export default function Dashboard() {
@@ -96,6 +96,18 @@ export default function Dashboard() {
         )
       }
 
+    <footer className={styles.footer}>
+        <a
+          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Powered by{' '}
+          <span className={styles.logo}>
+            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+          </span>
+        </a>
+      </footer>
     </div>
   )
 }

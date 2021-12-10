@@ -22,7 +22,6 @@ export default function MovieListItem({ movieData, exists, updateMovies}) {
         console.log(data.movies)
         if (data.movies.indexOf(movie_id) === -1) {
           let newMovieArray = [movie_id, ...data.movies]
-          console.log(newMovieArray)
           await updateDoc(docRef, {
             movies: newMovieArray
           })

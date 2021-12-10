@@ -2,7 +2,6 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import axios from 'axios'
-import MovieList from '../components/MovieList'
 import PopularList from '../components/PopularList'
 
 export async function getStaticProps() {
@@ -17,7 +16,8 @@ export async function getStaticProps() {
   }
 
   return {
-    props: {movies}
+    props: {movies},
+    revalidate: 36000
   }
 }
 

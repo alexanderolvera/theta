@@ -3,7 +3,6 @@ import { useState } from 'react'
 import PopularListItem from './PopularListItem'
 
 export default function RandomizerModal ({ movies }) {
-
   const [show, setShow] = useState(false);
   const [randomMovie, setRandomMovie] = useState(null)
 
@@ -19,8 +18,8 @@ export default function RandomizerModal ({ movies }) {
 
   return (
     <>
-      {movies || movies.results.length > 1 ?
-      <button className="btn btn-warning" onClick={handleRandomizerClick}>Im Feeling Lucky!</button>
+      {(movies && movies.results.length > 1) ?
+      <Button variant="success" onClick={handleRandomizerClick}>Im Feeling Lucky!</Button>
       :
       null
       }
@@ -33,7 +32,7 @@ export default function RandomizerModal ({ movies }) {
       <Button variant="secondary" onClick={handleClose}>
         Close
       </Button>
-      <Button variant="primary" onClick={handleRandomizerClick}>
+      <Button variant="danger" onClick={handleRandomizerClick}>
         Re-roll
       </Button>
     </Modal.Footer>

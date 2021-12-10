@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react'
 import MovieListItem from './MovieListItem'
-import Loader from './Loader'
 
 export default function MovieList({ list, userList, updateMovies }) {
 

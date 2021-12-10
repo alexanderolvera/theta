@@ -7,6 +7,7 @@ import { db } from '../../lib/firebase'
 import Loader from '../../components/Loader'
 import MovieList from '../../components/MovieList'
 import MovieSearch from "../../components/MovieSearch"
+import RandomizerModal from '../../components/RandomizerModal'
 import styles from '../../styles/Home.module.css'
 import axios from "axios";
 
@@ -90,7 +91,15 @@ export default function Dashboard() {
               </li>
             </ul>
             <div className="page-data">
-              {activeTab === "movie-list-tab" ? <MovieList list={movies} userList={movieIds} updateMovies={updateMovies} /> : <MovieSearch userList={movieIds} updateMovies={updateMovies} />}
+              {activeTab === "movie-list-tab" ?
+                (
+                  <>
+                  <RandomizerModal movies={movies}/>
+                  <MovieList list={movies} userList={movieIds} updateMovies={updateMovies} />
+                  </>
+                )
+                :
+                <MovieSearch userList={movieIds} updateMovies={updateMovies} />}
             </div>
           </>
         )
